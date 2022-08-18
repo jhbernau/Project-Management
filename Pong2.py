@@ -7,7 +7,7 @@ import turtle  # Turtle is the main feature of the program, it draws the ball an
 import time
 
 wn = turtle.Screen()    # Defining the name, colour, and shape of the game window
-wn.title("Bouncy boys super smash")
+wn.title("Bouncy Funtime")
 wn.bgcolor("black")
 wn.setup(width=800, height=600)    # This defines the window size and allows me to position turtles in various places
 wn.tracer(0)
@@ -101,17 +101,17 @@ centre_line5.shapesize(stretch_wid=2.5, stretch_len=0.2)
 centre_line5.penup()
 centre_line5.goto(0, 150)
 
-welcome_message = turtle.Turtle()
+welcome_message = turtle.Turtle()   # This message will display when the program begins, and disappear after 5 seconds.
 welcome_message.speed(0)
-welcome_message.color("#9F9F9F")
+welcome_message.color("#9F9F9F")    # Colour is the same as the colours used throughout the project
 welcome_message.penup()
 welcome_message.hideturtle()
-welcome_message.goto(0, 0)
-welcome_message.write("Welcome to modern Pong! \n Player 1 uses w and s keys \n player 2 uses up and down arrow keys.", align="center", font=("Courier", 20, "normal"))
-welcome_message.goto(0, -200)
-welcome_message.write("This game is in no way affiliated with Atari Interactive Inc.", align="center", font=("Courier", 10, "normal"))
-time.sleep(5)
-welcome_message.clear()
+welcome_message.goto(0, 0)  # The turtle moves to the centre of the screen, and the text welcomes the players and tells them the controls.
+welcome_message.write("Welcome to modern Pong! \n Player 1 uses w and s keys \n Player 2 uses up and down arrow keys.", align="center", font=("Courier", 20, "normal"))
+welcome_message.goto(0, -200)   # This message helps protect from legal implications
+welcome_message.write("This game is in no way affiliated with Atari Interactive Inc.", align="center", font=("Impact", 10, "normal"))
+time.sleep(5)   # This delays the code, allowing the message to be displayed for five seconds.
+welcome_message.clear()    # This clears the message and allows the game to run as usual.
 
 
 
@@ -207,13 +207,17 @@ while True:
         ball.dy *= 1.009
         os.system("afplay pong.wav&")
 
+    # If the ball is travelling faster than 5 pixels per movement, it can travel through the paddles. This keeps the ball speed just below this
+
     if ball.dx > 4.99 and ball.dy > 4.99:
         ball.dx = 4.99
         ball.dy = 4.99
 
     if ball.dx < -4.99 and ball.dy > 4.99:
         ball.dx = -4.99
-        ball.dy = 4.99
+        ball.dy = 4.99  # This monitors ball speed in the opposite direction
+
+    # Prevents paddles form existing the viewing window by establishing barriers
 
     if paddle_a.ycor() < -250:
         paddle_a.goto(-350, -250)
@@ -230,7 +234,7 @@ while True:
     # Colour changes and sounds according to score
 
     if score_a == 0:
-        paddle_a.color("#9F9F9F")
+        paddle_a.color("#9F9F9F")   # The colours were chosen according to aesthetic preferences and the progression of the rainbow
     if score_a == 1:
         paddle_a.color("#FF0000")
     if score_a == 2:
@@ -245,7 +249,7 @@ while True:
         paddle_a.color("#8B00FF")
     if score_a == 7:
         paddle_a.color("#9F9F9F")
-        os.system("afplay win.wav&")
+        os.system("afplay win.wav&")    # Fanfare plays when a players wins a point (seven score)
         score_a = 0
         score_b = 0
         points_a += 1
@@ -254,6 +258,8 @@ while True:
         pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center", font=("Courier", 30, "normal"))
         pen.goto(0, 220)
         pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+
+    # When a player wins a point, the scores are reset to zero and score display is updated.
 
     if score_b == 0:
         paddle_b.color("#9F9F9F")
@@ -280,3 +286,5 @@ while True:
         pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center", font=("Courier", 30, "normal"))
         pen.goto(0, 220)
         pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+
+    # Above is the same for the other player
