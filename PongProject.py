@@ -134,6 +134,20 @@ while True:
         ball.dx = -4.99
         ball.dy = 4.99
 
+    # Prevents paddles from existing the viewing window by establishing barriers
+
+    if paddle_a.ycor() < -250:
+        paddle_a.goto(-350, -250)
+
+    if paddle_a.ycor() > 250:
+        paddle_a.goto(-350, 250)
+
+    if paddle_b.ycor() < -250:
+        paddle_b.goto(350, -250)
+
+    if paddle_b.ycor() > 250:
+        paddle_b.goto(350, 250)
+
     if paddle_a.ycor() < -250:
         paddle_a.goto(-350, -250)    # These 4 statements mean that the paddles cannot move outside of the viewing window, by being teleported back into the window when it moves out.
 
