@@ -118,21 +118,21 @@ while True:
     # Paddle and ball collisions, Ball speed
     if (ball.xcor() > 340 and ball.xcor() < 355) and (ball.ycor() < paddle_b.ycor() + 50 and (ball.ycor() > paddle_b.ycor() - 50)):    # If the ball's x coordinate is within the paddles x coordinate, and in the same y coordinate as the paddle
         ball.setx(340)
-        ball.dx *= -1
-        ball.dy *= 1    # The ball collides with the paddle and rebounds at a slightly increased speed
+        ball.dx *= -1.009
+        ball.dy *= 1.009    # The ball collides with the paddle and rebounds at a slightly increased speed
 
     if (ball.xcor() < -340 and ball.xcor() > -355) and (ball.ycor() < paddle_a.ycor() + 50 and (ball.ycor() > paddle_a.ycor() - 50)):    # If the ball's x coordinate is within the paddles x coordinate, and in the same y coordinate as the paddle
         ball.setx(-340)
-        ball.dx *= -1
-        ball.dy *= 1    # The ball collides with the paddle and rebounds at a slightly increased speed
+        ball.dx *= -1.009
+        ball.dy *= 1.009   # The ball collides with the paddle and rebounds at a slightly increased speed
 
-    if ball.dx > 5 and ball.dy > 5:
-        ball.dx = 5
-        ball.dy = 5    # This is a cap on the ball's max speed, so it is playable for the user and cannot move straight through the paddle.
+    if ball.dx > 4.99 and ball.dy > 4.99:
+        ball.dx = 4.99
+        ball.dy = 4.99    # This is a cap on the ball's max speed, so it is playable for the user and cannot move straight through the paddle.
 
-    if ball.dx < -5 and ball.dy > 5:
-        ball.dx = -5
-        ball.dy = 5
+    if ball.dx < -4.99 and ball.dy > 4.99:
+        ball.dx = -4.99
+        ball.dy = 4.99
 
     if paddle_a.ycor() < -250:
         paddle_a.goto(-350, -250)    # These 4 statements mean that the paddles cannot move outside of the viewing window, by being teleported back into the window when it moves out.
