@@ -104,7 +104,12 @@ while True:
 
     if ball.xcor() > 390:
         ball.goto(0, 0)
-        ball.dx *= -1
+        if ball.dx >= 3:
+            ball.dx = -3
+        if ball.dy >= 3:
+            ball.dy = -3
+        if ball.dy <= -3:
+            ball.dy = 3
         score_a += 1    # When the ball reaches the left border, the ball teleports to the centre and restarts, the score is increased to the player that scored
         pen.clear()
         pen.goto(0, 260)
@@ -114,7 +119,12 @@ while True:
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
-        ball.dx *= -1
+        if ball.dx <= -3:
+            ball.dx = 3
+        if ball.dy >= 3:
+            ball.dy = -3
+        if ball.dy <= -3:
+            ball.dy = 3
         score_b += 1    # When the ball reaches the right border, the ball teleports to the centre and restarts, the score is increased to the player that scored
         pen.clear()
         pen.goto(0, 260)
@@ -194,6 +204,36 @@ while True:
     if paddle_b.ycor() > 250:
         paddle_b.goto(350, 250)
 
+    # Colours
 
+    if score_a == 0:
+        paddle_a.color("white")
+    if score_a == 1:
+        paddle_a.color("red")
+    if score_a == 2:
+        paddle_a.color("orange")
+    if score_a == 3:
+        paddle_a.color("yellow")
+    if score_a == 4:
+        paddle_a.color("green")
+    if score_a == 5:
+        paddle_a.color("blue")
+    if score_a == 6:
+        paddle_a.color("purple")
+
+    if score_b == 0:
+        paddle_b.color("white")
+    if score_b == 1:
+        paddle_b.color("red")
+    if score_b == 2:
+        paddle_b.color("orange")
+    if score_b == 3:
+        paddle_b.color("yellow")
+    if score_b == 4:
+        paddle_b.color("green")
+    if score_b == 5:
+        paddle_b.color("blue")
+    if score_b == 6:
+        paddle_b.color("purple")
 
 
