@@ -14,6 +14,8 @@ wn.tracer(0)
 # Score
 score_a = 0    # These variables keep track of the points scored by player a and player b
 score_b = 0
+points_a = 0
+points_b = 0
 
 # Paddle A
 paddle_a = turtle.Turtle()  # Paddle a is a turtle - it can move and be whatever shape or colour is chosen
@@ -51,8 +53,9 @@ pen.color("white")
 pen.penup()    # Pen has no trail
 pen.hideturtle()    # Pen cannot be seen
 pen.goto(0, 260)    # Pen moves to these coordinates
-pen.write("A SCORE - 0 - 0 - B SCORE", align="center", font=("Courier", 24, "normal"))    # This defines what is written by the pen, the font and size
-
+pen.write("A POINTS - 0 - 0 - B POINTS", align="center", font=("Courier", 30, "normal"))
+pen.goto(0, 220)
+pen.write("A SCORE - 0 - 0 - B SCORE", align="center", font=("Courier", 24, "normal"))
 
 # Function
 def paddle_a_up():
@@ -105,7 +108,9 @@ while True:
         score_a += 1    # When the ball reaches the left border, the ball teleports to the centre and restarts, the score is increased to the player that scored
         pen.clear()
         pen.goto(0, 260)
-        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))    # The pen increases the new scores and updates the display
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center", font=("Courier", 30, "normal"))
+        pen.goto(0, 220)
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
@@ -113,7 +118,36 @@ while True:
         score_b += 1    # When the ball reaches the right border, the ball teleports to the centre and restarts, the score is increased to the player that scored
         pen.clear()
         pen.goto(0, 260)
-        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))    # The pen increases the new scores and updates the display
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center", font=("Courier", 30, "normal"))
+        pen.goto(0, 220)
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+
+
+    if score_a == 7:
+        paddle_a.color("white")
+        score_a = 0
+        score_b = 0
+        points_a += 1
+        pen.clear()
+        pen.goto(0, 260)
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
+                  font=("Courier", 30, "normal"))
+        pen.goto(0, 220)
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
+                  font=("Courier", 24, "normal"))
+
+    if score_b == 7:
+        paddle_a.color("white")
+        score_a = 0
+        score_b = 0
+        points_b += 1
+        pen.clear()
+        pen.goto(0, 260)
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
+                  font=("Courier", 30, "normal"))
+        pen.goto(0, 220)
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
+                  font=("Courier", 24, "normal"))
 
     # Paddle and ball collisions, Ball speed
     if (ball.xcor() > 340 and ball.xcor() < 355) and (ball.ycor() < paddle_b.ycor() + 50 and (ball.ycor() > paddle_b.ycor() - 50)):    # If the ball's x coordinate is within the paddles x coordinate, and in the same y coordinate as the paddle
