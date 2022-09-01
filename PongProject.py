@@ -21,7 +21,7 @@ points_b = 0
 paddle_a = turtle.Turtle()  # Paddle a is a turtle - it can move and be whatever shape or colour is chosen
 paddle_a.speed(0)   # The paddle does not move from it's fixed position
 paddle_a.shape("square")
-paddle_a.color("white")    # Colour and shape are that of the classic paddle
+paddle_a.color("#9F9F9F")    # Colour and shape are that of the classic paddle
 paddle_a.shapesize(stretch_wid=5, stretch_len=1)    # Stretching width and length makes the paddle into a rectangle, which is the intended shape
 paddle_a.penup()    # When the paddle moves, it will not leave a trail
 paddle_a.goto(-350, 0)  # This is where the paddle will be positioned on the window, at the far left of the screen.
@@ -30,7 +30,7 @@ paddle_a.goto(-350, 0)  # This is where the paddle will be positioned on the win
 paddle_b = turtle.Turtle()
 paddle_b.speed(0)
 paddle_b.shape("square")
-paddle_b.color("white")
+paddle_b.color("#9F9F9F")
 paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 paddle_b.penup()
 paddle_b.goto(350, 0)
@@ -38,8 +38,8 @@ paddle_b.goto(350, 0)
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
-ball.shape("square")
-ball.color("white")    # Shape and colour is the 'ball' shape from classic pong
+ball.shape("circle")
+ball.color("#9F9F9F")    # Shape and colour is the 'ball' shape from classic pong
 ball.penup()    # Ball will not leave a trail
 ball.goto(0, 0)    # Ball starts in the centre of the screen
 ball.dx = 3   # ball.dx and ball.dy define the speed at which the ball moves
@@ -49,7 +49,7 @@ ball.dy = -3
 # Pen
 pen = turtle.Turtle()
 pen.speed(0)
-pen.color("white")
+pen.color("#9F9F9F")
 pen.penup()    # Pen has no trail
 pen.hideturtle()    # Pen cannot be seen
 pen.goto(0, 260)    # Pen moves to these coordinates
@@ -133,32 +133,6 @@ while True:
         pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
 
-    if score_a == 7:
-        paddle_a.color("white")
-        score_a = 0
-        score_b = 0
-        points_a += 1
-        pen.clear()
-        pen.goto(0, 260)
-        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
-                  font=("Courier", 30, "normal"))
-        pen.goto(0, 220)
-        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
-                  font=("Courier", 24, "normal"))
-
-    if score_b == 7:
-        paddle_a.color("white")
-        score_a = 0
-        score_b = 0
-        points_b += 1
-        pen.clear()
-        pen.goto(0, 260)
-        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
-                  font=("Courier", 30, "normal"))
-        pen.goto(0, 220)
-        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
-                  font=("Courier", 24, "normal"))
-
     # Paddle and ball collisions, Ball speed
     if (ball.xcor() > 340 and ball.xcor() < 355) and (ball.ycor() < paddle_b.ycor() + 50 and (ball.ycor() > paddle_b.ycor() - 50)):    # If the ball's x coordinate is within the paddles x coordinate, and in the same y coordinate as the paddle
         ball.setx(340)
@@ -207,33 +181,56 @@ while True:
     # Colours
 
     if score_a == 0:
-        paddle_a.color("white")
+        paddle_a.color("#9F9F9F")
     if score_a == 1:
-        paddle_a.color("red")
+        paddle_a.color("#FF0000")
     if score_a == 2:
-        paddle_a.color("orange")
+        paddle_a.color("#FF5100")
     if score_a == 3:
-        paddle_a.color("yellow")
+        paddle_a.color("#FFFF00")
     if score_a == 4:
-        paddle_a.color("green")
+        paddle_a.color("#2AFF00")
     if score_a == 5:
-        paddle_a.color("blue")
+        paddle_a.color("#00ECFF")
     if score_a == 6:
-        paddle_a.color("purple")
+        paddle_a.color("#8B00FF")
+    if score_a == 7:
+        paddle_a.color("#9F9F9F")
+        score_a = 0
+        score_b = 0
+        points_a += 1
+        pen.clear()
+        pen.goto(0, 260)
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
+                  font=("Courier", 30, "normal"))
+        pen.goto(0, 220)
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
+                  font=("Courier", 24, "normal"))
 
     if score_b == 0:
-        paddle_b.color("white")
+        paddle_b.color("#9F9F9F")
     if score_b == 1:
-        paddle_b.color("red")
+        paddle_b.color("#FF0000")
     if score_b == 2:
-        paddle_b.color("orange")
+        paddle_b.color("#FF5100")
     if score_b == 3:
-        paddle_b.color("yellow")
+        paddle_b.color("#FFFF00")
     if score_b == 4:
-        paddle_b.color("green")
+        paddle_b.color("#2AFF00")
     if score_b == 5:
-        paddle_b.color("blue")
+        paddle_b.color("#00ECFF")
     if score_b == 6:
-        paddle_b.color("purple")
-
+        paddle_b.color("#8B00FF")
+    if score_b == 7:
+        paddle_a.color("#9F9F9F")
+        score_a = 0
+        score_b = 0
+        points_b += 1
+        pen.clear()
+        pen.goto(0, 260)
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
+                  font=("Courier", 30, "normal"))
+        pen.goto(0, 220)
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
+                  font=("Courier", 24, "normal"))
 
