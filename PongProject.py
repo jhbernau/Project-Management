@@ -57,6 +57,49 @@ pen.write("A POINTS - 0 - 0 - B POINTS", align="center", font=("Courier", 30, "n
 pen.goto(0, 220)
 pen.write("A SCORE - 0 - 0 - B SCORE", align="center", font=("Courier", 24, "normal"))
 
+
+# Centre line
+centre_line1 = turtle.Turtle()
+centre_line1.speed(0)
+centre_line1.shape("square")
+centre_line1.color("#9F9F9F")   # The centre line is a turtle that adds to the aesthetic of the game
+centre_line1.shapesize(stretch_wid=3, stretch_len=0.2)  # Stretched into a rectangle
+centre_line1.penup()    # The centre line does not leave a trail
+centre_line1.goto(0, -250)  # Moves the centre line to its desired location
+
+centre_line2 = turtle.Turtle()  # Repeated centre lines to create a dotted line
+centre_line2.speed(0)
+centre_line2.shape("square")
+centre_line2.color("#9F9F9F")
+centre_line2.shapesize(stretch_wid=3, stretch_len=0.2)
+centre_line2.penup()
+centre_line2.goto(0, -150)
+
+centre_line3 = turtle.Turtle()
+centre_line3.speed(0)
+centre_line3.shape("square")
+centre_line3.color("#9F9F9F")
+centre_line3.shapesize(stretch_wid=3, stretch_len=0.2)
+centre_line3.penup()
+centre_line3.goto(0, -50)
+
+centre_line4 = turtle.Turtle()
+centre_line4.speed(0)
+centre_line4.shape("square")
+centre_line4.color("#9F9F9F")
+centre_line4.shapesize(stretch_wid=3, stretch_len=0.2)
+centre_line4.penup()
+centre_line4.goto(0, 50)
+
+centre_line5 = turtle.Turtle()
+centre_line5.speed(0)
+centre_line5.shape("square")
+centre_line5.color("#9F9F9F")
+centre_line5.shapesize(stretch_wid=2.5, stretch_len=0.2)
+centre_line5.penup()
+centre_line5.goto(0, 150)
+
+
 # Function
 def paddle_a_up():
     y = paddle_a.ycor()    # Checks for the y coordinate of the paddle and assigns it to the variable 'y'
