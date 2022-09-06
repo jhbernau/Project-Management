@@ -2,6 +2,7 @@
 # By James Bernau
 # Pt. 1
 
+import os
 import turtle   # Turtle is the main feature of the program, it draws the ball and paddles and allows them to move.
 
 wn = turtle.Screen()    # Defining the name, colour, and shape of the game window
@@ -140,10 +141,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1    # If the ball collides with the top border, it will 'bounce' off
+        os.system("afplay pong.wav&")
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1    # If the ball collides with the bottom border, it will 'bounce' off
+        os.system("afplay pong.wav&")
 
     if ball.xcor() > 390:
         ball.goto(0, 0)
@@ -181,11 +184,15 @@ while True:
         ball.setx(340)
         ball.dx *= -1.009
         ball.dy *= 1.009    # The ball collides with the paddle and rebounds at a slightly increased speed
+        os.system("afplay pong.wav&")
+
 
     if (ball.xcor() < -340 and ball.xcor() > -355) and (ball.ycor() < paddle_a.ycor() + 50 and (ball.ycor() > paddle_a.ycor() - 50)):    # If the ball's x coordinate is within the paddles x coordinate, and in the same y coordinate as the paddle
         ball.setx(-340)
         ball.dx *= -1.009
         ball.dy *= 1.009   # The ball collides with the paddle and rebounds at a slightly increased speed
+        os.system("afplay pong.wav&")
+
 
     if ball.dx > 4.99 and ball.dy > 4.99:
         ball.dx = 4.99
@@ -239,6 +246,7 @@ while True:
         paddle_a.color("#8B00FF")
     if score_a == 7:
         paddle_a.color("#9F9F9F")
+        os.system("afplay win.wav&")
         score_a = 0
         score_b = 0
         points_a += 1
@@ -266,6 +274,7 @@ while True:
         paddle_b.color("#8B00FF")
     if score_b == 7:
         paddle_a.color("#9F9F9F")
+        os.system("afplay win.wav&")
         score_a = 0
         score_b = 0
         points_b += 1
