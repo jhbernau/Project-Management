@@ -4,6 +4,7 @@
 
 import os
 import turtle   # Turtle is the main feature of the program, it draws the ball and paddles and allows them to move.
+import time
 
 wn = turtle.Screen()    # Defining the name, colour, and shape of the game window
 wn.title("Pong")
@@ -11,8 +12,7 @@ wn.bgcolor("black")
 wn.setup(width=800, height=600)    # This defines the window size and allows me to position turtles in various places
 wn.tracer(0)
 
-
-# Score
+# Score and Points
 score_a = 0    # These variables keep track of the points scored by player a and player b
 score_b = 0
 points_a = 0
@@ -99,6 +99,21 @@ centre_line5.color("#9F9F9F")
 centre_line5.shapesize(stretch_wid=2.5, stretch_len=0.2)
 centre_line5.penup()
 centre_line5.goto(0, 150)
+
+# Welcome Message
+
+welcome_message = turtle.Turtle()   # This message will display when the program begins, and disappear after 5 seconds.
+welcome_message.speed(0)
+welcome_message.color("#9F9F9F")    # Colour is the same as the colours used throughout the project
+welcome_message.penup()
+welcome_message.hideturtle()
+welcome_message.goto(0, 0)  # The turtle moves to the centre of the screen, and the text welcomes the players and tells them the controls.
+welcome_message.write("Welcome to modern Pong! \n Player 1 uses w and s keys \n Player 2 uses up and down arrow keys.", align="center", font=("Courier", 20, "normal"))
+welcome_message.goto(0, -200)   # This message helps protect from legal implications
+welcome_message.write("This game is in no way affiliated with Atari Interactive Inc.", align="center", font=("Impact", 10, "normal"))
+time.sleep(5)   # This delays the code, allowing the message to be displayed for five seconds.
+welcome_message.clear()    # This clears the message and allows the game to run as usual.
+
 
 
 # Function
@@ -205,18 +220,6 @@ while True:
     # Prevents paddles from existing the viewing window by establishing barriers
 
     if paddle_a.ycor() < -250:
-        paddle_a.goto(-350, -250)
-
-    if paddle_a.ycor() > 250:
-        paddle_a.goto(-350, 250)
-
-    if paddle_b.ycor() < -250:
-        paddle_b.goto(350, -250)
-
-    if paddle_b.ycor() > 250:
-        paddle_b.goto(350, 250)
-
-    if paddle_a.ycor() < -250:
         paddle_a.goto(-350, -250)    # These 4 statements mean that the paddles cannot move outside of the viewing window, by being teleported back into the window when it moves out.
 
     if paddle_a.ycor() > 250:
@@ -252,11 +255,9 @@ while True:
         points_a += 1
         pen.clear()
         pen.goto(0, 260)
-        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
-                  font=("Courier", 30, "normal"))
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center", font=("Courier", 30, "normal"))
         pen.goto(0, 220)
-        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
-                  font=("Courier", 24, "normal"))
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
     if score_b == 0:
         paddle_b.color("#9F9F9F")
@@ -280,9 +281,7 @@ while True:
         points_b += 1
         pen.clear()
         pen.goto(0, 260)
-        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center",
-                  font=("Courier", 30, "normal"))
+        pen.write("A POINTS - {} - {} - B POINTS".format(points_a, points_b), align="center", font=("Courier", 30, "normal"))
         pen.goto(0, 220)
-        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center",
-                  font=("Courier", 24, "normal"))
+        pen.write("A SCORE - {} - {} - B SCORE".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
